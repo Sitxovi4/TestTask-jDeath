@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `accountId` int(11) NOT NULL AUTO_INCREMENT,
   `account` int(11) DEFAULT NULL,
-  `userId` varchar(45) DEFAULT NULL,
+  `userId` varchar(45) NOT NULL,
   PRIMARY KEY (`accountId`)
 ) ;
 
@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
-  `surName` varchar(45) NOT NULL,
+  `surName` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`userId`)
 );
 
