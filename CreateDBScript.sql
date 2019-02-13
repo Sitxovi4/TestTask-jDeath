@@ -5,8 +5,8 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `accountId` int(11) NOT NULL AUTO_INCREMENT,
   `account` int(11) DEFAULT NULL,
-  `userId` varchar(45) NOT NULL,
-  PRIMARY KEY (`accountId`)
+  `userId` int(11) NOT NULL,
+  PRIMARY KEY (`accountId`, `userId`)
 ) ;
 
 LOCK TABLES `account` WRITE;
