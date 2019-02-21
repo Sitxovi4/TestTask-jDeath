@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `userbank`;
+CREATE DATABASE `userbank`;
 USE `userbank`;
 
 DROP TABLE IF EXISTS `account`;
