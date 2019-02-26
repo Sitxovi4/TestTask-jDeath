@@ -4,21 +4,15 @@
 <head>
     <title>TestTask</title>
 </head>
-    <body>
-
-    <form action="<c:url value="/getRichestUser"/>"  method="get">
-        <label>
-            <input type="text" name="richest_user" value="richest user">
-        </label>
-        <input type="submit" name="button1" value="get">
+<body>
+    <form>
+        ${richest}
     </form>
-
-    <form action="<c:url value="/getAccountSum"/>"  method="get">
+    <form action="<c:url value="/getAccountSum"/>">
         <label>
             <input type="text" name="account_sum" value="accounts sum">
         </label>
         <input type="submit" name="button2" value="get">
     </form>
-
-    </body>
+</body>
 </html>
