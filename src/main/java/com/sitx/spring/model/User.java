@@ -55,6 +55,7 @@ public class User {
         return getClass().getSimpleName() + "{id: " + ID +
                                             ", name: " + NAME +
                                             ", surname: " + SURNAME +
-                                            ", account: " + ACCOUNT +  "};";
+                                            ", account: " + ACCOUNT +
+                                            "};";
     }
 }
