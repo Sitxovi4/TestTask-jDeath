@@ -1,4 +1,4 @@
-package com.sitx.spring.mapper;
+package com.sitx.spring.dao.mapper;
 
 import com.sitx.spring.model.User;
 import org.springframework.jdbc.core.RowMapper;

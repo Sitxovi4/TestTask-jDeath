@@ -1,7 +1,7 @@
-package com.sitx.spring.daoimp;
+package com.sitx.spring.dao.daoimp;
 
 import com.sitx.spring.dao.UserDAO;
-import com.sitx.spring.mapper.UserMapper;
+import com.sitx.spring.dao.mapper.UserMapper;
 import com.sitx.spring.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
