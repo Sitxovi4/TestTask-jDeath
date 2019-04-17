@@ -1,48 +1,59 @@
 package com.sitx.spring.model;
 
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "user")
 public class User {
 
-    private int ID;
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userId", unique = true, nullable = false)
+    private int userId;
+
+    @Basic
+    @Column(name = "name")
     private String NAME;
+
+    @Basic
+    @Column(name = "surname")
     private String SURNAME;
-    private int ACCOUNT;
+
+    @OneToMany(mappedBy = "user")
+    private List<Account> accounts = new ArrayList<Account>();
 
 
-    public User(int ID, String NAME, String SURNAME, int ACCOUNT) {
-        this.ID = ID;
-        this.NAME = NAME;
-        this.SURNAME = SURNAME;
-        this.ACCOUNT = ACCOUNT;
+    public User() {
     }
 
-    public int getACCOUNT() {
-        return ACCOUNT;
+
+
+    public int getUserId() {
+        return userId;
     }
 
-    public void setACCOUNT(int ACCOUNT) {
-        this.ACCOUNT = ACCOUNT;
+
+    public void setUserId(int ID) {
+        this.userId = ID;
     }
 
-    public User(){}
-
-    public int getID() {
-        return ID;
-    }
 
     public String getNAME() {
         return NAME;
     }
 
-    public String getSURNAME() {
-        return SURNAME;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     public void setNAME(String NAME) {
         this.NAME = NAME;
+    }
+
+
+    public String getSURNAME() {
+        return SURNAME;
     }
 
     public void setSURNAME(String SURNAME) {
@@ -50,12 +61,23 @@ public class User {
     }
 
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
     @Override
     public String toString(){
-        return getClass().getSimpleName() + "{id: " + ID +
+        return getClass().getSimpleName() + "{id: " + userId +
                                             ", name: " + NAME +
                                             ", surname: " + SURNAME +
-                                            ", account: " + ACCOUNT +
                                             "};";
     }
+
+
+
+
 }

@@ -1,7 +1,13 @@
 package com.sitx.spring.controller;
 
-import com.sitx.spring.dao.UserDAO;
+
+import com.sitx.spring.Service;
+import com.sitx.spring.dao.DAOImpl.AccountDAOImpl;
+import com.sitx.spring.dao.DAOImpl.UserDAOImpl;
+import com.sitx.spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,30 +15,33 @@ import org.springframework.web.servlet.ModelAndView;
 @org.springframework.stereotype.Controller
 public class Controller {
 
-    private final UserDAO userDAO;
+
+    private UserDAOImpl userDAOImpl;
+    private AccountDAOImpl accountDAOImpl;
+    private Service service;
 
     @Autowired
-    public Controller(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public Controller(UserDAOImpl userDAOImpl, AccountDAOImpl accountDAOImpl, Service service) {
+        this.userDAOImpl = userDAOImpl;
+        this.accountDAOImpl = accountDAOImpl;
+        this.service = service;
     }
 
 
-    @RequestMapping(value = "/getAccountSum", method = RequestMethod.GET)
-    public ModelAndView getAccountSum(ModelAndView modelAndView){
-        int accountSum = userDAO.getAccountsSum();
-        modelAndView.addObject("accountsum",accountSum);
-        modelAndView.setViewName("accountssum");
-        return modelAndView;
+    @GetMapping(value = "/getAccountSum" )
+    public String getAccountSum(Model model){
+        int accountSum = accountDAOImpl.getAccountsSum();
+        model.addAttribute("accountsum", accountSum);
+        return "accountssum";
 
     }
 
-
-    @RequestMapping(value = "/getRichestUser", method = RequestMethod.GET)
-    public ModelAndView getRichestUser(ModelAndView modelAndView){
-        String richest = userDAO.getRichestUser().getNAME()+ " " + userDAO.getRichestUser().getSURNAME();
-        modelAndView.addObject("richest", richest);
-        modelAndView.setViewName("richestuser");
-        return modelAndView;
+    @GetMapping(value = "/getRichestUser" )
+    public String getRichestUser(Model model){
+        User user = (User) service.getRichestUser();
+        String richest = user.getNAME()+ " " +user.getSURNAME();
+        model.addAttribute("richest", richest);
+        return "richestuser";
 
     }
 }
